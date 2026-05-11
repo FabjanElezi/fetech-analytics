@@ -1,65 +1,88 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { DollarSign, ShoppingCart, Users, TrendingUp } from "lucide-react";
+import Header from "@/components/layout/Header";
+import KPICard from "@/components/ui/KPICard";
+import SectionCard from "@/components/ui/SectionCard";
+import InsightBanner from "@/components/ui/InsightBanner";
+import HealthScoreCard from "@/components/ui/HealthScoreCard";
+import RevenueChart from "@/components/charts/RevenueChart";
+import CategoryDonutChart from "@/components/charts/CategoryDonutChart";
+import RegionBarChart from "@/components/charts/RegionBarChart";
+import RecentOrdersTable from "@/components/tables/RecentOrdersTable";
+import { useData } from "@/context/DataContext";
+import { getOverviewInsights, getHealthScore } from "@/lib/insightEngine";
+
+export default function DashboardPage() {
+  const { data } = useData();
+
+  const totalRevenue = data.monthlyRevenue.reduce((s, m) => s + m.revenue, 0);
+  const totalRevenuePrev = data.monthlyRevenue.reduce((s, m) => s + m.prevYearRevenue, 0);
+  const totalOrders = data.monthlyRevenue.reduce((s, m) => s + m.orders, 0);
+  const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+  const totalCustomers = data.customerSegments.reduce((s, c) => s + c.count, 0);
+  const prevCustomers = Math.round(totalCustomers * 0.87);
+
+  const insights = getOverviewInsights(data);
+  const healthScore = getHealthScore(data);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Header
+        title="Overview"
+        subtitle={`Retail performance summary — ${data.period}${data.isCustomData ? ` · ${data.companyName}` : ""}`}
+      />
+
+      <div className="flex-1 p-8 space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <KPICard label="Total Revenue"    value={totalRevenue}    previousValue={totalRevenuePrev} format="currency" icon={DollarSign}  iconColor="bg-indigo-50 text-indigo-600" />
+          <KPICard label="Total Orders"     value={totalOrders}     previousValue={Math.round(totalOrders * 0.89)} format="number" icon={ShoppingCart} iconColor="bg-violet-50 text-violet-600" />
+          <KPICard label="Avg Order Value"  value={avgOrderValue}   previousValue={avgOrderValue * 0.96} format="currency" icon={TrendingUp} iconColor="bg-cyan-50 text-cyan-600" decimals={0} />
+          <KPICard label="Active Customers" value={totalCustomers}  previousValue={prevCustomers} format="number" icon={Users} iconColor="bg-emerald-50 text-emerald-600" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Insights + Health Score */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2">
+            <InsightBanner insights={insights} title="Performance Insights" />
+          </div>
+          <HealthScoreCard healthScore={healthScore} />
         </div>
-      </main>
-    </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <SectionCard title="Monthly Revenue — YoY Comparison" subtitle="Current year vs previous year" className="xl:col-span-2">
+            <RevenueChart data={data.monthlyRevenue} />
+          </SectionCard>
+          <SectionCard title="Revenue by Category" subtitle="Share of total revenue">
+            <CategoryDonutChart data={data.salesByCategory} />
+          </SectionCard>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <SectionCard title="Revenue by Region" subtitle="YoY growth % per region">
+            <RegionBarChart data={data.salesByRegion} />
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {data.salesByRegion.map((r) => (
+                <div key={r.region} className="flex items-center justify-between text-xs px-2 py-1.5 bg-slate-50 rounded-lg">
+                  <span className="text-gray-600 font-medium">{r.region}</span>
+                  <span className={r.growth >= 0 ? "text-emerald-600 font-semibold" : "text-red-500 font-semibold"}>
+                    {r.growth >= 0 ? "+" : ""}{r.growth}%
+                  </span>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
+
+          <SectionCard
+            title="Recent Orders"
+            subtitle="Last 10 transactions"
+            className="xl:col-span-2"
+            action={<span className="text-xs text-indigo-500 font-medium cursor-pointer hover:underline">View all</span>}
+          >
+            <RecentOrdersTable orders={data.recentOrders} />
+          </SectionCard>
+        </div>
+      </div>
+    </>
   );
 }

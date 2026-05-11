@@ -1,0 +1,139 @@
+date,order_id,customer_id,customer_name,product,category,amount,channel,region,status
+2024-01-03,ORD-10001,C-001,Sarah Mitchell,Dell XPS 15 Laptop,Electronics,1299.99,online,Northeast,completed
+2024-01-05,ORD-10002,C-002,James Thornton,Winter Parka XL,Clothing & Apparel,189.00,in-store,Southeast,completed
+2024-01-07,ORD-10003,C-003,Maria Gonzalez,KitchenAid Stand Mixer,Home & Garden,449.95,in-store,Midwest,completed
+2024-01-09,ORD-10004,C-004,David Park,Sony WH-1000XM5,Electronics,349.99,online,West,completed
+2024-01-11,ORD-10005,C-005,Emma Johnson,Yoga Mat Pro,Sports & Outdoors,87.50,online,Northeast,completed
+2024-01-14,ORD-10006,C-006,Robert Chen,Dyson V15 Detect,Home & Garden,699.99,in-store,Southeast,completed
+2024-01-15,ORD-10007,C-007,Olivia Williams,Air Jordan 4 Retro,Clothing & Apparel,210.00,online,Midwest,completed
+2024-01-17,ORD-10008,C-008,Michael Brown,Organic Coffee Bundle,Food & Beverage,54.99,in-store,West,completed
+2024-01-18,ORD-10009,C-009,Sophia Davis,Apple Watch Series 10,Electronics,429.00,online,Northeast,completed
+2024-01-21,ORD-10010,C-010,Daniel Wilson,Weber Genesis Grill,Home & Garden,1099.00,in-store,Southeast,completed
+2024-01-22,ORD-10011,C-001,Sarah Mitchell,Wireless Earbuds Pro,Electronics,149.99,online,Northeast,completed
+2024-01-24,ORD-10012,C-011,Ava Martinez,Running Shoes Elite,Sports & Outdoors,124.99,online,Midwest,completed
+2024-01-25,ORD-10013,C-012,Noah Thompson,Levi's 501 Jeans,Clothing & Apparel,79.99,in-store,West,completed
+2024-01-28,ORD-10014,C-013,Isabella Garcia,Instant Pot Duo,Home & Garden,99.99,online,Northeast,completed
+2024-01-30,ORD-10015,C-014,Liam Anderson,Protein Powder Bundle,Food & Beverage,89.99,online,Southeast,completed
+2024-02-02,ORD-10016,C-015,Charlotte Jackson,Samsung 65" QLED TV,Electronics,1199.99,online,Midwest,completed
+2024-02-04,ORD-10017,C-016,Benjamin White,Columbia Rain Jacket,Clothing & Apparel,149.99,in-store,West,completed
+2024-02-06,ORD-10018,C-017,Amelia Harris,Vitamix 5200 Blender,Home & Garden,379.95,online,Northeast,completed
+2024-02-08,ORD-10019,C-003,Maria Gonzalez,Garmin Fenix 7 Pro,Electronics,699.99,online,Midwest,completed
+2024-02-10,ORD-10020,C-018,Lucas Martin,Trek Marlin 7 MTB,Sports & Outdoors,849.99,in-store,Southeast,completed
+2024-02-12,ORD-10021,C-019,Mia Thompson,Artisan Cheese Board Set,Food & Beverage,45.99,online,West,completed
+2024-02-14,ORD-10022,C-020,Henry Lee,iPad Pro 12.9,Electronics,1099.99,online,Northeast,completed
+2024-02-15,ORD-10023,C-021,Harper Rodriguez,Women's Yoga Set,Clothing & Apparel,95.00,in-store,Southeast,completed
+2024-02-18,ORD-10024,C-022,Alexander Walker,Power Drill Set,Home & Garden,189.99,in-store,Midwest,completed
+2024-02-20,ORD-10025,C-023,Evelyn Hall,Tennis Racket Pro,Sports & Outdoors,229.00,online,West,returned
+2024-02-22,ORD-10026,C-001,Sarah Mitchell,Smart Home Hub,Electronics,129.99,online,Northeast,completed
+2024-02-25,ORD-10027,C-024,Sebastian Young,Premium Tea Collection,Food & Beverage,38.99,online,Southeast,completed
+2024-02-27,ORD-10028,C-025,Scarlett King,Cashmere Sweater,Clothing & Apparel,279.00,in-store,Midwest,completed
+2024-03-01,ORD-10029,C-026,Jackson Wright,Ninja Air Fryer,Home & Garden,129.99,online,West,completed
+2024-03-03,ORD-10030,C-027,Victoria Scott,MacBook Air M3,Electronics,1299.99,online,Northeast,completed
+2024-03-05,ORD-10031,C-028,Owen Green,Swim Training Kit,Sports & Outdoors,67.99,online,Southeast,completed
+2024-03-07,ORD-10032,C-029,Penelope Adams,Slim Fit Blazer,Clothing & Apparel,159.00,in-store,Midwest,completed
+2024-03-10,ORD-10033,C-030,Carter Baker,Nespresso Vertuo,Food & Beverage,199.99,online,West,completed
+2024-03-12,ORD-10034,C-031,Lily Nelson,Roomba i7 Robot Vacuum,Home & Garden,499.99,online,Northeast,completed
+2024-03-14,ORD-10035,C-032,Wyatt Carter,Sony A7 IV Camera,Electronics,2799.99,online,Southeast,completed
+2024-03-17,ORD-10036,C-033,Zoe Mitchell,Patagonia Fleece,Clothing & Apparel,129.00,in-store,Midwest,completed
+2024-03-19,ORD-10037,C-034,Julian Perez,Hiking Boot Pro,Sports & Outdoors,189.99,online,West,completed
+2024-03-21,ORD-10038,C-010,Daniel Wilson,Weber Accessories Kit,Home & Garden,79.99,in-store,Southeast,completed
+2024-03-24,ORD-10039,C-035,Nora Evans,LG Washing Machine,Home & Garden,899.99,in-store,Northeast,completed
+2024-03-26,ORD-10040,C-036,Josiah Collins,Mechanical Keyboard,Electronics,199.99,online,Midwest,completed
+2024-04-02,ORD-10041,C-037,Hazel Stewart,Spring Dress Collection,Clothing & Apparel,245.00,online,West,completed
+2024-04-04,ORD-10042,C-038,Elias Sanchez,Outdoor Dining Set,Home & Garden,599.99,in-store,Northeast,completed
+2024-04-06,ORD-10043,C-039,Aurora Morris,Fitness Tracker Band,Electronics,199.99,online,Southeast,completed
+2024-04-09,ORD-10044,C-040,Miles Rogers,Golf Club Set,Sports & Outdoors,449.99,in-store,Midwest,completed
+2024-04-11,ORD-10045,C-001,Sarah Mitchell,Premium Coffee Beans,Food & Beverage,49.99,online,Northeast,completed
+2024-04-13,ORD-10046,C-041,Violet Reed,Smart Thermostat,Home & Garden,249.99,online,West,completed
+2024-04-15,ORD-10047,C-042,Theodore Cook,Gaming Laptop RTX,Electronics,1799.99,online,Northeast,completed
+2024-04-17,ORD-10048,C-043,Stella Morgan,Linen Summer Shirt,Clothing & Apparel,59.99,in-store,Southeast,completed
+2024-04-19,ORD-10049,C-044,Caleb Bell,Kayak Paddle Set,Sports & Outdoors,149.99,online,Midwest,completed
+2024-04-22,ORD-10050,C-045,Isla Murphy,Organic Wine Box,Food & Beverage,79.99,online,West,completed
+2024-05-03,ORD-10051,C-046,Ezra Bailey,Cuisinart Food Processor,Home & Garden,149.99,online,Northeast,completed
+2024-05-06,ORD-10052,C-047,Chloe Rivera,Sony PlayStation 5,Electronics,499.99,online,Southeast,completed
+2024-05-08,ORD-10053,C-048,Levi Cooper,Denim Jacket Premium,Clothing & Apparel,89.99,in-store,Midwest,completed
+2024-05-10,ORD-10054,C-049,Grace Richardson,Road Bike Carbon,Sports & Outdoors,1299.99,online,West,completed
+2024-05-13,ORD-10055,C-050,Asher Cox,Specialty Spice Set,Food & Beverage,35.99,online,Northeast,completed
+2024-05-15,ORD-10056,C-006,Robert Chen,iRobot Braava Mop,Home & Garden,299.99,online,Southeast,completed
+2024-05-17,ORD-10057,C-051,Paisley Howard,Noise Cancelling Headphones,Electronics,329.99,online,Midwest,completed
+2024-05-20,ORD-10058,C-052,Grayson Ward,Summer Linen Pants,Clothing & Apparel,69.99,in-store,West,completed
+2024-05-22,ORD-10059,C-053,Savannah Torres,Crossfit Equipment Set,Sports & Outdoors,399.99,online,Northeast,completed
+2024-05-24,ORD-10060,C-054,Hunter Peterson,Gourmet Chocolate Box,Food & Beverage,44.99,online,Southeast,completed
+2024-06-03,ORD-10061,C-055,Bella Gray,Bosch Dishwasher,Home & Garden,799.99,in-store,Midwest,completed
+2024-06-05,ORD-10062,C-056,Axel Ramirez,Microsoft Surface Pro,Electronics,1399.99,online,West,completed
+2024-06-08,ORD-10063,C-057,Serenity James,Floral Maxi Dress,Clothing & Apparel,119.99,online,Northeast,completed
+2024-06-11,ORD-10064,C-058,Adriel Foster,Surfboard + Leash,Sports & Outdoors,549.99,in-store,Southeast,completed
+2024-06-13,ORD-10065,C-059,Elena Gonzales,Cold Brew Kit,Food & Beverage,39.99,online,Midwest,completed
+2024-06-16,ORD-10066,C-060,Xander Powell,Smart Door Lock,Home & Garden,189.99,online,West,completed
+2024-06-18,ORD-10067,C-009,Sophia Davis,iPad Mini 6,Electronics,649.99,online,Northeast,completed
+2024-06-20,ORD-10068,C-061,Natalia Bryant,Swim Cover-Up Set,Clothing & Apparel,55.99,in-store,Southeast,completed
+2024-06-22,ORD-10069,C-062,Colton Russell,Camping Tent 4-Person,Sports & Outdoors,249.99,online,Midwest,completed
+2024-06-25,ORD-10070,C-063,Delilah Griffin,Artisan Pasta Bundle,Food & Beverage,29.99,online,West,completed
+2024-07-02,ORD-10071,C-064,Finn Coleman,Samsung Galaxy S24,Electronics,899.99,online,Northeast,completed
+2024-07-05,ORD-10072,C-065,Magnolia Warren,Back-to-School Backpack,Clothing & Apparel,79.99,online,Southeast,completed
+2024-07-08,ORD-10073,C-066,Reid Ferguson,Garden Tool Kit,Home & Garden,89.99,in-store,Midwest,completed
+2024-07-10,ORD-10074,C-067,Celeste Diaz,Paddleboard Stand-Up,Sports & Outdoors,699.99,online,West,completed
+2024-07-12,ORD-10075,C-003,Maria Gonzalez,Protein Bar 12-Pack,Food & Beverage,34.99,online,Midwest,completed
+2024-07-15,ORD-10076,C-068,Jaxon Ross,Smart LED Light Strip,Electronics,59.99,online,Northeast,completed
+2024-07-17,ORD-10077,C-069,Sloane Jenkins,Linen Shirt Dress,Clothing & Apparel,89.99,in-store,Southeast,completed
+2024-07-19,ORD-10078,C-070,Crew Owens,Pressure Washer,Home & Garden,329.99,in-store,Midwest,completed
+2024-07-22,ORD-10079,C-071,Rosalie Shaw,Climbing Harness Kit,Sports & Outdoors,149.99,online,West,completed
+2024-07-24,ORD-10080,C-072,Declan Lawrence,Craft Beer Starter Kit,Food & Beverage,64.99,online,Northeast,completed
+2024-08-02,ORD-10081,C-073,Miriam Price,DJI Mini 4 Pro Drone,Electronics,759.99,online,Southeast,completed
+2024-08-05,ORD-10082,C-074,Callum Jenkins,Autumn Jacket Premium,Clothing & Apparel,199.99,in-store,Midwest,completed
+2024-08-07,ORD-10083,C-075,Ingrid Sanders,Stand Mixer Attachments,Home & Garden,149.99,online,West,completed
+2024-08-10,ORD-10084,C-076,Fletcher Price,Football Training Set,Sports & Outdoors,89.99,online,Northeast,completed
+2024-08-12,ORD-10085,C-077,Sienna Hughes,Gourmet Snack Box,Food & Beverage,39.99,online,Southeast,completed
+2024-08-14,ORD-10086,C-030,Carter Baker,Espresso Machine Pro,Food & Beverage,399.99,in-store,West,completed
+2024-08-16,ORD-10087,C-078,Jasper Foster,Apple AirPods Pro 2,Electronics,249.99,online,Northeast,completed
+2024-08-19,ORD-10088,C-079,Lyra Simmons,Back-to-School Hoodie,Clothing & Apparel,59.99,in-store,Southeast,completed
+2024-08-21,ORD-10089,C-080,Sawyer Bryant,Under Armour Training Kit,Sports & Outdoors,119.99,online,Midwest,completed
+2024-08-23,ORD-10090,C-081,Clover Patterson,BBQ Spice Collection,Food & Beverage,29.99,online,West,completed
+2024-09-03,ORD-10091,C-082,Daxton Alexander,ASUS ROG Gaming Monitor,Electronics,499.99,online,Northeast,completed
+2024-09-06,ORD-10092,C-083,Ember Hamilton,Fall Trench Coat,Clothing & Apparel,249.99,in-store,Southeast,completed
+2024-09-09,ORD-10093,C-084,Rowan Graham,Leaf Blower Cordless,Home & Garden,179.99,in-store,Midwest,completed
+2024-09-11,ORD-10094,C-085,Petra Cruz,Yoga Block & Strap Set,Sports & Outdoors,29.99,online,West,completed
+2024-09-13,ORD-10095,C-086,Sylvie Hart,Organic Meal Prep Kit,Food & Beverage,55.99,online,Northeast,completed
+2024-09-16,ORD-10096,C-087,Caius Webb,Nest Cam Outdoor 4K,Electronics,299.99,online,Southeast,completed
+2024-09-18,ORD-10097,C-001,Sarah Mitchell,Wool Autumn Scarf,Clothing & Apparel,49.99,online,Northeast,completed
+2024-09-20,ORD-10098,C-088,Orion Stone,Cordless Drill Pro,Home & Garden,149.99,in-store,Midwest,completed
+2024-09-23,ORD-10099,C-089,Zara Flores,Climbing Shoes,Sports & Outdoors,99.99,online,West,completed
+2024-09-25,ORD-10100,C-090,Idris Murray,Specialty Coffee Sampler,Food & Beverage,42.99,online,Northeast,completed
+2024-10-02,ORD-10101,C-091,Lena Barrett,Amazon Echo Show 10,Electronics,249.99,online,Southeast,completed
+2024-10-05,ORD-10102,C-092,Oswin Palmer,Men's Puffer Jacket,Clothing & Apparel,179.99,in-store,Midwest,completed
+2024-10-08,ORD-10103,C-093,Astrid Chambers,Smart Security Camera,Home & Garden,129.99,online,West,completed
+2024-10-10,ORD-10104,C-094,Caspian Gordon,Soccer Cleats + Ball,Sports & Outdoors,109.99,online,Northeast,completed
+2024-10-12,ORD-10105,C-095,Liora Walsh,Harvest Wine Selection,Food & Beverage,69.99,online,Southeast,completed
+2024-10-15,ORD-10106,C-004,David Park,Bose SoundLink Speaker,Electronics,299.99,online,West,completed
+2024-10-18,ORD-10107,C-096,Elio Castillo,Halloween Costume Set,Clothing & Apparel,45.99,in-store,Northeast,completed
+2024-10-21,ORD-10108,C-097,Wren Nichols,Electric Fireplace,Home & Garden,449.99,in-store,Southeast,completed
+2024-10-24,ORD-10109,C-098,Lucian Andrews,Ski Goggles Pro,Sports & Outdoors,129.99,online,Midwest,completed
+2024-10-27,ORD-10110,C-099,Seraphina Ortiz,Artisan Cheese Gift Set,Food & Beverage,59.99,online,West,completed
+2024-11-01,ORD-10111,C-100,Atticus Fleming,iPhone 16 Pro Max,Electronics,1199.99,online,Northeast,completed
+2024-11-03,ORD-10112,C-101,Lydia Watkins,Canada Goose Parka,Clothing & Apparel,895.00,in-store,Southeast,completed
+2024-11-06,ORD-10113,C-102,Felix Hicks,Cuisinart Cookware Set,Home & Garden,349.99,online,Midwest,completed
+2024-11-08,ORD-10114,C-103,Zinnia Kelley,Ski Pole + Helmet Set,Sports & Outdoors,229.99,in-store,West,completed
+2024-11-10,ORD-10115,C-104,Oberon Crawford,Aged Balsamic Collection,Food & Beverage,39.99,online,Northeast,completed
+2024-11-15,ORD-10116,C-001,Sarah Mitchell,Samsung Galaxy Tab S9,Electronics,649.99,online,Northeast,completed
+2024-11-20,ORD-10117,C-105,Isadora Porter,Black Friday Coat Deal,Clothing & Apparel,119.99,in-store,Southeast,processing
+2024-11-22,ORD-10118,C-106,Clio Simmons,Smart Refrigerator,Home & Garden,1299.99,in-store,Midwest,completed
+2024-11-25,ORD-10119,C-107,Leandro Torres,Black Friday Running Kit,Sports & Outdoors,199.99,online,West,completed
+2024-11-26,ORD-10120,C-108,Thalassa Morgan,Holiday Food Hamper,Food & Beverage,89.99,online,Northeast,completed
+2024-11-27,ORD-10121,C-109,Bastian Cole,PS5 + 3 Games Bundle,Electronics,699.99,online,Southeast,completed
+2024-11-28,ORD-10122,C-110,Elowen Bates,Winter Boots Premium,Clothing & Apparel,169.99,in-store,Midwest,completed
+2024-11-29,ORD-10123,C-111,Orinthia Fox,Cordless Vacuum Combo,Home & Garden,399.99,online,West,completed
+2024-11-30,ORD-10124,C-003,Maria Gonzalez,Cycling Computer GPS,Sports & Outdoors,299.99,online,Midwest,completed
+2024-12-02,ORD-10125,C-112,Taliesin Gray,Truffle & Caviar Set,Food & Beverage,129.99,online,Northeast,completed
+2024-12-04,ORD-10126,C-113,Roxana Pierce,Apple Mac Mini M4,Electronics,799.99,online,Southeast,completed
+2024-12-06,ORD-10127,C-114,Cyprian Fields,Christmas Jumper Set,Clothing & Apparel,49.99,in-store,Midwest,completed
+2024-12-09,ORD-10128,C-115,Fiora Hammond,Coffee Machine Deluxe,Home & Garden,599.99,in-store,West,completed
+2024-12-11,ORD-10129,C-116,Aldric Rhodes,Ski Jacket + Pants,Sports & Outdoors,449.99,online,Northeast,completed
+2024-12-13,ORD-10130,C-009,Sophia Davis,AirPods Max,Electronics,549.99,online,Northeast,completed
+2024-12-15,ORD-10131,C-117,Thessaly Moon,Christmas Party Dress,Clothing & Apparel,89.99,in-store,Southeast,completed
+2024-12-17,ORD-10132,C-118,Endymion Cole,Sous Vide Circulator,Home & Garden,149.99,online,Midwest,completed
+2024-12-20,ORD-10133,C-119,Calanthe Barnes,Winter Running Shoes,Sports & Outdoors,159.99,online,West,completed
+2024-12-22,ORD-10134,C-120,Evander Quinn,Holiday Wine & Cheese,Food & Beverage,74.99,online,Northeast,completed
+2024-12-24,ORD-10135,C-001,Sarah Mitchell,Apple Vision Pro,Electronics,3499.99,online,Northeast,completed
+2024-12-26,ORD-10136,C-004,David Park,Post-Xmas Puffer Coat,Clothing & Apparel,89.99,online,West,returned
+2024-12-28,ORD-10137,C-121,Miroslava Kent,Philips Hue Starter Kit,Home & Garden,199.99,online,Southeast,completed
+2024-12-30,ORD-10138,C-122,Theron Blake,New Year Running Kit,Sports & Outdoors,179.99,online,Midwest,completed

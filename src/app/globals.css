@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +12,33 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin scrollbar for sidebar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+/* ── Print / PDF export ───────────────────────────────────────────────────── */
+@media print {
+  /* Hide navigation chrome */
+  aside,
+  [data-print-hide] { display: none !important; }
+
+  /* Remove sidebar offset so content fills the page */
+  main { margin-left: 0 !important; }
+
+  /* White background everywhere */
+  body, main { background: #fff !important; }
+
+  /* Avoid page breaks inside cards */
+  .rounded-xl, .rounded-2xl, section { break-inside: avoid; }
+
+  /* Slightly smaller font for density */
+  body { font-size: 11px; }
 }
