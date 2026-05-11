@@ -1,21 +1,29 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest, type NextFetchEvent } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
-
-// Check if real Clerk keys have been configured.
-// If not (still placeholder or missing), skip auth so local dev works without setup.
+const CLERK_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? "";
 const clerkConfigured =
-  !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
-  !process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.includes("REPLACE_ME") &&
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith("pk_");
+  CLERK_KEY.startsWith("pk_") && !CLERK_KEY.includes("REPLACE_ME");
 
-export default clerkMiddleware(async (auth, request) => {
-  if (!clerkConfigured) return NextResponse.next();
-  if (!isPublicRoute(request)) {
-    await auth.protect();
-  }
-});
+// Only initialise Clerk's middleware when real keys are present.
+// Importing clerkMiddleware without valid keys can throw at module load time
+// in production (Vercel), so we gate behind the clerkConfigured flag.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let handler: (req: NextRequest, evt: NextFetchEvent) => any;
+
+if (clerkConfigured) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { clerkMiddleware, createRouteMatcher } = require("@clerk/nextjs/server");
+  const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+  handler = clerkMiddleware(
+    async (auth: { protect: () => Promise<void> }, request: NextRequest) => {
+      if (!isPublicRoute(request)) await auth.protect();
+    }
+  );
+} else {
+  handler = () => NextResponse.next();
+}
+
+export default handler;
 
 export const config = {
   matcher: [
