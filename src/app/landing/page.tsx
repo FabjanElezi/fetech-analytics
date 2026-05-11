@@ -10,6 +10,9 @@ import {
   Zap,
   ArrowRight,
   CheckCircle2,
+  Mail,
+  Globe,
+  Linkedin,
 } from "lucide-react";
 
 const features = [
@@ -223,6 +226,53 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Founder / About */}
+      <section className="px-6 sm:px-12 py-20 max-w-4xl mx-auto">
+        <div className="rounded-2xl border border-gray-100 bg-white p-8 sm:p-12 flex flex-col sm:flex-row items-center sm:items-start gap-8 shadow-sm">
+          {/* Avatar initials */}
+          <div className="shrink-0 h-20 w-20 rounded-2xl bg-indigo-600 flex items-center justify-center text-2xl font-black text-white select-none">
+            FE
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-1">Built &amp; designed by</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-1">Fabjan Elezi</h3>
+            <p className="text-sm font-medium text-gray-500 mb-4">Founder &amp; CEO · FETech</p>
+            <p className="text-gray-600 leading-relaxed mb-6 max-w-xl">
+              FETech Analytics is my vision of what a modern retail BI platform should look like — fast, free,
+              no-account-required, and genuinely useful for real business decisions. Built with Next.js, Recharts,
+              and an ETS forecasting engine running entirely in the browser.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="mailto:projects@balkaninfluencers.com"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                <Mail className="h-4 w-4 text-indigo-500" />
+                projects@balkaninfluencers.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/fabjan-elezi-7527b2295"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                <Linkedin className="h-4 w-4 text-indigo-500" />
+                LinkedIn
+              </a>
+              <a
+                href="https://felezitech.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                <Globe className="h-4 w-4 text-indigo-500" />
+                felezitech.vercel.app
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="px-6 sm:px-12 py-20 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to understand your business?</h2>
@@ -246,14 +296,23 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 px-6 sm:px-12 py-8">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded bg-indigo-600">
               <BarChart3 className="h-3.5 w-3.5 text-white" />
             </div>
             <span className="text-sm font-medium text-gray-700">FETech Analytics</span>
+            <span className="text-gray-300 text-sm">·</span>
+            <span className="text-xs text-gray-400">by Fabjan Elezi</span>
           </div>
-          <p className="text-xs text-gray-400">Built with Next.js, Recharts, and Tailwind CSS</p>
+          <div className="flex items-center gap-4 text-xs text-gray-400">
+            <a href="mailto:projects@balkaninfluencers.com" className="hover:text-indigo-600 transition-colors">
+              projects@balkaninfluencers.com
+            </a>
+            <a href="https://felezitech.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">
+              felezitech.vercel.app
+            </a>
+          </div>
         </div>
       </footer>
     </div>

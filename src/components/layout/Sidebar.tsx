@@ -97,8 +97,8 @@ export default function Sidebar() {
               <BarChart3 className="h-5 w-5 text-white" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-white leading-tight">FETech</p>
-              <p className="text-xs text-slate-400 leading-tight">Analytics Platform</p>
+              <p className="text-sm font-semibold text-white leading-tight">FETech Analytics</p>
+              <p className="text-xs text-slate-400 leading-tight">by Fabjan Elezi</p>
             </div>
           </div>
           {/* Mobile close button */}
