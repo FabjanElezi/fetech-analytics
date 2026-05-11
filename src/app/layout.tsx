@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Sidebar from "@/components/layout/Sidebar";
+import ChatBot from "@/components/ui/ChatBot";
 import { DataProvider } from "@/context/DataContext";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
     <DataProvider>
       <Sidebar />
       <main className="ml-64 min-h-screen flex flex-col">{children}</main>
+      <ChatBot />
     </DataProvider>
   );
 }
