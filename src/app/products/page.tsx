@@ -5,13 +5,15 @@ import Header from "@/components/layout/Header";
 import KPICard from "@/components/ui/KPICard";
 import SectionCard from "@/components/ui/SectionCard";
 import InsightBanner from "@/components/ui/InsightBanner";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import CategoryBarChart from "@/components/charts/CategoryBarChart";
 import TopProductsTable from "@/components/tables/TopProductsTable";
 import { useData } from "@/context/DataContext";
 import { getProductInsights } from "@/lib/insightEngine";
 
 export default function ProductsPage() {
-  const { data } = useData();
+  const { data, isLoaded } = useData();
+  if (!isLoaded) return <><Header title="Products" /><DashboardSkeleton /></>;
 
   const totalRevenue = data.topProducts.reduce((s, p) => s + p.revenue, 0);
   const totalUnits = data.topProducts.reduce((s, p) => s + p.unitsSold, 0);
@@ -29,7 +31,7 @@ export default function ProductsPage() {
         subtitle={`Product performance, category breakdown, and margin analysis${data.isCustomData ? ` · ${data.companyName}` : ""}`}
       />
 
-      <div className="flex-1 p-8 space-y-8">
+      <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <KPICard label="Top Products Revenue" value={totalRevenue}  previousValue={totalRevenue * 0.88} format="currency" icon={DollarSign} iconColor="bg-indigo-50 text-indigo-600" />
           <KPICard label="Units Sold"           value={totalUnits}   previousValue={Math.round(totalUnits * 0.91)} format="number" icon={Package} iconColor="bg-violet-50 text-violet-600" />

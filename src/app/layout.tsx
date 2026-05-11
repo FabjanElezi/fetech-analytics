@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Sidebar from "@/components/layout/Sidebar";
 import ChatBot from "@/components/ui/ChatBot";
 import { DataProvider } from "@/context/DataContext";
+import { SidebarProvider } from "@/context/SidebarContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -22,26 +24,32 @@ const clerkConfigured = clerkKey.startsWith("pk_") && !clerkKey.includes("REPLAC
 
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <DataProvider>
-      <Sidebar />
-      <main className="ml-64 min-h-screen flex flex-col">{children}</main>
-      <ChatBot />
-    </DataProvider>
+    <ThemeProvider>
+      <SidebarProvider>
+        <DataProvider>
+          <Sidebar />
+          <main className="lg:ml-64 min-h-screen flex flex-col">{children}</main>
+          <ChatBot />
+        </DataProvider>
+      </SidebarProvider>
+    </ThemeProvider>
   );
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const htmlClass = `${geistSans.variable} ${geistMono.variable}`;
+
   return clerkConfigured ? (
     <ClerkProvider>
-      <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-        <body className="bg-slate-50 min-h-screen">
+      <html lang="en" className={htmlClass}>
+        <body className="bg-slate-50 dark:bg-slate-950 min-h-screen">
           <AppShell>{children}</AppShell>
         </body>
       </html>
     </ClerkProvider>
   ) : (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="bg-slate-50 min-h-screen">
+    <html lang="en" className={htmlClass}>
+      <body className="bg-slate-50 dark:bg-slate-950 min-h-screen">
         <AppShell>{children}</AppShell>
       </body>
     </html>

@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import KPICard from "@/components/ui/KPICard";
 import SectionCard from "@/components/ui/SectionCard";
 import InsightBanner from "@/components/ui/InsightBanner";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import CustomerSegmentChart from "@/components/charts/CustomerSegmentChart";
 import CustomerAcquisitionChart from "@/components/charts/CustomerAcquisitionChart";
 import { formatCurrency, formatNumber } from "@/lib/utils";
@@ -21,7 +22,8 @@ function retentionColor(value: number): string {
 }
 
 export default function CustomersPage() {
-  const { data } = useData();
+  const { data, isLoaded } = useData();
+  if (!isLoaded) return <><Header title="Customers" /><DashboardSkeleton /></>;
 
   const totalCustomers = data.customerSegments.reduce((s, c) => s + c.count, 0);
   const totalNew = data.customerAcquisition.reduce((s, c) => s + c.newCustomers, 0);
@@ -38,7 +40,7 @@ export default function CustomersPage() {
         subtitle={`Segmentation, acquisition trends, lifetime value, and cohort retention${data.isCustomData ? ` · ${data.companyName}` : ""}`}
       />
 
-      <div className="flex-1 p-8 space-y-8">
+      <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <KPICard label="Total Customers"    value={totalCustomers} previousValue={Math.round(totalCustomers * 0.87)} format="number"   icon={Users}      iconColor="bg-indigo-50 text-indigo-600" />
           <KPICard label="New Customers"      value={totalNew}       previousValue={Math.round(totalNew * 0.91)}       format="number"   icon={UserPlus}   iconColor="bg-emerald-50 text-emerald-600" />

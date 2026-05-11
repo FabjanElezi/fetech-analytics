@@ -11,19 +11,30 @@ import { parseCSV } from "@/lib/csvParser";
 import { formatCurrency, formatNumber } from "@/lib/utils";
 import type { DashboardData } from "@/types";
 
+function parseRawRows(text: string): { headers: string[]; rows: string[][] } {
+  const lines = text.split(/\r?\n/).filter((l) => l.trim());
+  if (lines.length === 0) return { headers: [], rows: [] };
+  const headers = lines[0].split(",").map((h) => h.trim().replace(/^["']|["']$/g, ""));
+  const rows = lines.slice(1, 6).map((line) =>
+    line.split(",").map((cell) => cell.trim().replace(/^["']|["']$/g, ""))
+  );
+  return { headers, rows };
+}
+
 export default function ImportPage() {
   const router = useRouter();
   const { data, setData, resetToMock } = useData();
   const [isProcessing, setIsProcessing] = useState(false);
   const [preview, setPreview] = useState<DashboardData | null>(null);
+  const [rawRows, setRawRows] = useState<{ headers: string[]; rows: string[][] } | null>(null);
   const [parseError, setParseError] = useState<string | null>(null);
 
   const handleFile = useCallback((text: string, name: string) => {
     setIsProcessing(true);
     setParseError(null);
     setPreview(null);
+    setRawRows(parseRawRows(text));
 
-    // Run parser async so the UI can show the processing state
     setTimeout(() => {
       try {
         const parsed = parseCSV(text, name);
@@ -46,7 +57,7 @@ export default function ImportPage() {
     <>
       <Header title="Import Data" subtitle="Upload your company's sales CSV to populate all dashboards with your real data" />
 
-      <div className="flex-1 p-8 space-y-8 max-w-4xl">
+      <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8 max-w-4xl">
 
         {/* ── Current dataset banner ─────────────────────────────────── */}
         {data.isCustomData && (
@@ -141,6 +152,36 @@ export default function ImportPage() {
           )}
         </SectionCard>
 
+        {/* ── Raw rows preview ───────────────────────────────────────── */}
+        {rawRows && rawRows.headers.length > 0 && (
+          <SectionCard title="Raw Data Preview" subtitle={`First ${rawRows.rows.length} rows of your CSV`}>
+            <div className="overflow-x-auto -mx-6">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    {rawRows.headers.map((h) => (
+                      <th key={h} className="px-4 py-2 text-left font-semibold text-indigo-600 uppercase tracking-wide whitespace-nowrap">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rawRows.rows.map((row, i) => (
+                    <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
+                      {row.map((cell, j) => (
+                        <td key={j} className="px-4 py-2 text-gray-600 whitespace-nowrap font-mono">
+                          {cell || <span className="text-gray-300">—</span>}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </SectionCard>
+        )}
+
         {/* ── Preview Summary ────────────────────────────────────────── */}
         {preview && (
           <SectionCard
@@ -174,7 +215,7 @@ export default function ImportPage() {
                 <ArrowRight className="h-4 w-4" />
               </button>
               <button
-                onClick={() => setPreview(null)}
+                onClick={() => { setPreview(null); setRawRows(null); }}
                 className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
               >
                 Cancel

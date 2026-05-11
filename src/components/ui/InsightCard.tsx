@@ -77,20 +77,20 @@ export default function InsightCard({ insight, className }: InsightCardProps) {
               {c.badgeText}
             </span>
             {insight.metric && (
-              <span className="text-[11px] font-bold text-gray-700 bg-white/70 rounded-full px-2 py-0.5 border border-gray-200">
+              <span className="text-[11px] font-bold text-gray-700 dark:text-slate-200 bg-white/70 dark:bg-slate-700/70 rounded-full px-2 py-0.5 border border-gray-200 dark:border-slate-600">
                 {insight.metric}
               </span>
             )}
           </div>
-          <p className="text-sm font-semibold text-gray-900 leading-snug">{insight.title}</p>
+          <p className="text-sm font-semibold text-gray-900 dark:text-slate-100 leading-snug">{insight.title}</p>
         </div>
       </div>
 
-      <p className="text-xs text-gray-600 leading-relaxed">{insight.description}</p>
+      <p className="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">{insight.description}</p>
 
-      <div className="flex items-start gap-1.5 pt-1 border-t border-black/5">
+      <div className="flex items-start gap-1.5 pt-1 border-t border-black/5 dark:border-white/5">
         <ArrowRight className="h-3.5 w-3.5 shrink-0 mt-0.5 text-gray-400" />
-        <p className="text-xs font-medium text-gray-700 leading-snug">{insight.action}</p>
+        <p className="text-xs font-medium text-gray-700 dark:text-slate-300 leading-snug">{insight.action}</p>
       </div>
     </div>
   );

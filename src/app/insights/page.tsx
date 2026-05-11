@@ -3,6 +3,7 @@
 import { AlertCircle, AlertTriangle, Lightbulb, TrendingUp, ArrowRight, Activity, Calendar, Database, Download } from "lucide-react";
 import Header from "@/components/layout/Header";
 import InsightCard from "@/components/ui/InsightCard";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import HealthScoreCard from "@/components/ui/HealthScoreCard";
 import { useData } from "@/context/DataContext";
 import {
@@ -60,7 +61,8 @@ interface TaggedInsight extends Insight {
 }
 
 export default function InsightsPage() {
-  const { data } = useData();
+  const { data, isLoaded } = useData();
+  if (!isLoaded) return <><Header title="Insights" /><DashboardSkeleton /></>;
 
   const now = new Date().toLocaleDateString("en-GB", {
     day: "numeric", month: "long", year: "numeric",

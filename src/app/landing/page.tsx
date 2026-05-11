@@ -1,0 +1,261 @@
+import Link from "next/link";
+import {
+  BarChart3,
+  TrendingUp,
+  Users,
+  Sparkles,
+  Upload,
+  LineChart,
+  ShieldCheck,
+  Zap,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
+
+const features = [
+  {
+    icon: TrendingUp,
+    color: "bg-indigo-50 text-indigo-600",
+    title: "Revenue Analytics",
+    desc: "Year-over-year comparisons, monthly trends, daily sales breakdown, and channel performance — all in one view.",
+  },
+  {
+    icon: Users,
+    color: "bg-violet-50 text-violet-600",
+    title: "Customer Intelligence",
+    desc: "RFM segmentation to identify Premium, Loyal, At-Risk, and New customers. Cohort retention heatmaps.",
+  },
+  {
+    icon: BarChart3,
+    color: "bg-cyan-50 text-cyan-600",
+    title: "Product Performance",
+    desc: "Category margin analysis, top products by revenue, return rate monitoring, and growth tracking.",
+  },
+  {
+    icon: LineChart,
+    color: "bg-emerald-50 text-emerald-600",
+    title: "12-Month Forecasting",
+    desc: "Exponential Smoothing (ETS) model with seasonal adjustments. Confidence bands. MAPE accuracy metrics.",
+  },
+  {
+    icon: Sparkles,
+    color: "bg-amber-50 text-amber-600",
+    title: "Auto-Generated Insights",
+    desc: "Prioritised recommendations ranked by impact — critical issues, warnings, opportunities, and strengths.",
+  },
+  {
+    icon: Upload,
+    color: "bg-rose-50 text-rose-600",
+    title: "Bring Your Own Data",
+    desc: "Upload any sales CSV. Flexible column mapping. Your data lives in your browser — no accounts needed.",
+  },
+];
+
+const steps = [
+  { num: "01", title: "Export your sales data", desc: "Export a CSV from your POS, Shopify, WooCommerce, or any system." },
+  { num: "02", title: "Upload to FETech", desc: "Drag and drop your CSV. We map columns automatically." },
+  { num: "03", title: "Instant insights", desc: "All 5 dashboard pages populate with your real data in seconds." },
+];
+
+const stats = [
+  { value: "6", label: "Dashboard pages" },
+  { value: "20+", label: "Auto-generated insights" },
+  { value: "0", label: "Accounts required" },
+  { value: "100%", label: "Browser-based, private" },
+];
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-6 sm:px-12 py-4 border-b border-gray-100">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+            <BarChart3 className="h-4 w-4 text-white" />
+          </div>
+          <span className="text-sm font-semibold text-gray-900">FETech Analytics</span>
+        </div>
+        <Link
+          href="/"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+        >
+          Open Dashboard
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </nav>
+
+      {/* Hero */}
+      <section className="px-6 sm:px-12 py-20 sm:py-28 max-w-5xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-xs font-medium text-indigo-600 mb-6">
+          <Zap className="h-3.5 w-3.5" />
+          No accounts. No subscription. Just upload your CSV.
+        </div>
+        <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+          Turn sales data into
+          <span className="text-indigo-600"> business decisions</span>
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+          FETech Analytics is a free retail BI platform that transforms your sales CSV into
+          revenue insights, customer segments, product analysis, and AI-powered forecasts — instantly.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-base font-semibold text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-100"
+          >
+            Try with demo data
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+          <Link
+            href="/import"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-200 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <Upload className="h-5 w-5 text-indigo-600" />
+            Import your CSV
+          </Link>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="bg-indigo-600 py-14">
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-8">
+          {stats.map(({ value, label }) => (
+            <div key={label} className="text-center">
+              <p className="text-3xl font-bold text-white">{value}</p>
+              <p className="text-sm text-indigo-200 mt-1">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="px-6 sm:px-12 py-20 max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Everything you need to understand your business</h2>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">Six dedicated analytics pages, each purpose-built for a different aspect of retail performance.</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map(({ icon: Icon, color, title, desc }) => (
+            <div key={title} className="p-6 rounded-2xl border border-gray-100 hover:border-indigo-100 hover:shadow-lg transition-all group">
+              <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl mb-4 ${color}`}>
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">{title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-slate-50 px-6 sm:px-12 py-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Up and running in minutes</h2>
+            <p className="text-gray-500 text-lg">No setup, no configuration, no accounts.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {steps.map(({ num, title, desc }) => (
+              <div key={num} className="relative">
+                <div className="text-5xl font-black text-indigo-100 mb-3">{num}</div>
+                <h3 className="text-base font-semibold text-gray-900 mb-2">{title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CSV requirements */}
+      <section className="px-6 sm:px-12 py-20 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Works with any sales CSV</h2>
+            <p className="text-gray-500 mb-6 leading-relaxed">
+              Export from Shopify, WooCommerce, Square, Lightspeed, or any POS system.
+              FETech maps your columns automatically — just three required fields.
+            </p>
+            <div className="space-y-3">
+              {[
+                ["date", "Yes", "Any date format"],
+                ["amount", "Yes", "Order total"],
+                ["category", "Yes", "Product category"],
+                ["customer_id", "Optional", "Enables RFM analysis"],
+                ["region", "Optional", "Regional breakdown"],
+                ["channel", "Optional", "Channel analytics"],
+              ].map(([col, req, note]) => (
+                <div key={col} className="flex items-center gap-3 text-sm">
+                  <CheckCircle2 className={`h-4 w-4 shrink-0 ${req === "Yes" ? "text-indigo-600" : "text-gray-300"}`} />
+                  <code className="font-mono text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded text-xs">{col}</code>
+                  <span className="text-gray-500">{note}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-slate-900 rounded-2xl p-6 text-sm font-mono text-slate-300 leading-7">
+            <span className="text-slate-500">// sample-data.csv</span>
+            <br />
+            <span className="text-emerald-400">date</span>,
+            <span className="text-cyan-400">amount</span>,
+            <span className="text-violet-400">category</span>,
+            <span className="text-amber-400">region</span>
+            <br />
+            2024-01-15,1299.99,Electronics,North
+            <br />
+            2024-01-16,89.50,Clothing,South
+            <br />
+            2024-01-17,450.00,Furniture,East
+            <br />
+            <span className="text-slate-600">...</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Privacy note */}
+      <section className="bg-indigo-50 border-t border-indigo-100 px-6 sm:px-12 py-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <ShieldCheck className="h-8 w-8 text-indigo-600 mx-auto mb-3" />
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">Your data never leaves your browser</h3>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-xl mx-auto">
+            FETech Analytics runs entirely client-side. Your sales data is stored in your browser&apos;s localStorage.
+            Nothing is uploaded to any server. No accounts, no cloud storage, no tracking.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 sm:px-12 py-20 text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to understand your business?</h2>
+        <p className="text-gray-500 mb-8 text-lg">Start with the demo data or import your own CSV.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-base font-semibold text-white hover:bg-indigo-700 transition-colors"
+          >
+            Open Dashboard
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+          <Link
+            href="/project-report"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-200 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            Read Project Report
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-100 px-6 sm:px-12 py-8">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded bg-indigo-600">
+              <BarChart3 className="h-3.5 w-3.5 text-white" />
+            </div>
+            <span className="text-sm font-medium text-gray-700">FETech Analytics</span>
+          </div>
+          <p className="text-xs text-gray-400">Built with Next.js, Recharts, and Tailwind CSS</p>
+        </div>
+      </footer>
+    </div>
+  );
+}

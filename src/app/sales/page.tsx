@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import KPICard from "@/components/ui/KPICard";
 import SectionCard from "@/components/ui/SectionCard";
 import InsightBanner from "@/components/ui/InsightBanner";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import RevenueChart from "@/components/charts/RevenueChart";
 import DailySalesChart from "@/components/charts/DailySalesChart";
 import RegionBarChart from "@/components/charts/RegionBarChart";
@@ -14,7 +15,8 @@ import { useData } from "@/context/DataContext";
 import { getSalesInsights } from "@/lib/insightEngine";
 
 export default function SalesPage() {
-  const { data } = useData();
+  const { data, isLoaded } = useData();
+  if (!isLoaded) return <><Header title="Sales" /><DashboardSkeleton /></>;
 
   const totalRevenue = data.monthlyRevenue.reduce((s, m) => s + m.revenue, 0);
   const totalRevenuePrev = data.monthlyRevenue.reduce((s, m) => s + m.prevYearRevenue, 0);
@@ -31,7 +33,7 @@ export default function SalesPage() {
         subtitle={`Revenue trends, channel performance, and regional breakdown${data.isCustomData ? ` · ${data.companyName}` : ""}`}
       />
 
-      <div className="flex-1 p-8 space-y-8">
+      <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <KPICard label="Total Revenue"  value={totalRevenue}    previousValue={totalRevenuePrev}           format="currency" icon={DollarSign}  iconColor="bg-indigo-50 text-indigo-600" />
           <KPICard label="Total Orders"   value={totalOrders}     previousValue={Math.round(totalOrders * 0.89)} format="number" icon={ShoppingCart} iconColor="bg-violet-50 text-violet-600" />

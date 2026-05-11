@@ -5,13 +5,15 @@ import Header from "@/components/layout/Header";
 import KPICard from "@/components/ui/KPICard";
 import SectionCard from "@/components/ui/SectionCard";
 import InsightBanner from "@/components/ui/InsightBanner";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import ForecastChart from "@/components/charts/ForecastChart";
 import { formatCurrency } from "@/lib/utils";
 import { useData } from "@/context/DataContext";
 import { getForecastInsights } from "@/lib/insightEngine";
 
 export default function ForecastingPage() {
-  const { data } = useData();
+  const { data, isLoaded } = useData();
+  if (!isLoaded) return <><Header title="Forecasting" /><DashboardSkeleton /></>;
   const { forecastPoints, forecastMetrics, forecastSummary } = data;
 
   const insights = getForecastInsights(data);
@@ -23,7 +25,7 @@ export default function ForecastingPage() {
         subtitle={`12-month projection using exponential smoothing with seasonal adjustment${data.isCustomData ? ` · ${data.companyName}` : ""}`}
       />
 
-      <div className="flex-1 p-8 space-y-8">
+      <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <KPICard label="Projected Next-Year Revenue" value={forecastSummary.projectedNextAnnual} previousValue={forecastSummary.actualCurrentAnnual} format="currency" icon={TrendingUp} iconColor="bg-indigo-50 text-indigo-600" />
           <KPICard label="Next Year Q1 Forecast"       value={forecastSummary.projectedNextQ1}     previousValue={forecastSummary.projectedNextQ1 * 0.91} format="currency" icon={Target}   iconColor="bg-violet-50 text-violet-600" />
