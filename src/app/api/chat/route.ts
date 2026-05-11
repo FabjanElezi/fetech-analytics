@@ -1,5 +1,5 @@
 import { streamText } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
+import { createAnthropic } from "@ai-sdk/anthropic";
 
 const SYSTEM_PROMPT = `You are the FETech Analytics assistant — a helpful, concise AI built into a retail Business Intelligence platform.
 
@@ -24,16 +24,21 @@ If the user asks about their specific data, refer to the dashboard context provi
 Never make up numbers that aren't in the context.`;
 
 export async function POST(req: Request) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    return Response.json(
-      { error: "ANTHROPIC_API_KEY is not configured. Add it to your environment variables." },
-      { status: 503 }
-    );
-  }
-
   try {
-    const { messages, context } = await req.json();
+    const { messages, context, apiKey: userKey } = await req.json();
+
+    // Option A: platform-wide key (env var) takes priority
+    // Option B: user-supplied key as fallback
+    const apiKey = process.env.ANTHROPIC_API_KEY || userKey;
+
+    if (!apiKey || !apiKey.startsWith("sk-ant-")) {
+      return Response.json(
+        { error: "NO_KEY" },
+        { status: 401 }
+      );
+    }
+
+    const anthropic = createAnthropic({ apiKey });
 
     const systemWithContext = context
       ? `${SYSTEM_PROMPT}\n\n--- Current Dashboard Data ---\n${context}`
