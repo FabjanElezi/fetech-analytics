@@ -244,11 +244,11 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="mailto:projects@balkaninfluencers.com"
+                href="mailto:fabjanelezi@proton.me"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <Mail className="h-4 w-4 text-indigo-500" />
-                projects@balkaninfluencers.com
+                fabjanelezi@proton.me
               </a>
               <a
                 href="https://www.linkedin.com/in/fabjan-elezi-7527b2295"
@@ -306,8 +306,8 @@ export default function LandingPage() {
             <span className="text-xs text-gray-400">by Fabjan Elezi</span>
           </div>
           <div className="flex items-center gap-4 text-xs text-gray-400">
-            <a href="mailto:projects@balkaninfluencers.com" className="hover:text-indigo-600 transition-colors">
-              projects@balkaninfluencers.com
+            <a href="mailto:fabjanelezi@proton.me" className="hover:text-indigo-600 transition-colors">
+              fabjanelezi@proton.me
             </a>
             <a href="https://felezitech.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">
               felezitech.vercel.app
