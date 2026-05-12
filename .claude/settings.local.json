@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\FETech Analytics\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Out-String)",
+      "PowerShell($items = @\\(\\); Get-ChildItem -Path \"C:\\\\FETech Analytics\" -Recurse -Force | ForEach-Object { $items += $_.FullName }; $items | Sort-Object)",
+      "PowerShell(Test-Path \"C:\\\\FETech Analytics\"; \\(Get-Item \"C:\\\\FETech Analytics\"\\).PSIsContainer)",
+      "PowerShell([System.IO.Directory]::GetFileSystemEntries\\(\"C:\\\\FETech Analytics\"\\) | Sort-Object)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(sed -i 's/flex-1 p-8 space-y-8/flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8/g' src/app/customers/page.tsx src/app/forecasting/page.tsx src/app/products/page.tsx src/app/sales/page.tsx)",
+      "Bash(sed -i 's/flex-1 p-8 space-y-8 max-w-4xl/flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8 max-w-4xl/g' src/app/import/page.tsx)",
+      "Bash(npx next *)",
+      "Bash(start \"next-dev\" /B npx next dev --port 3001)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(vercel --prod --yes)",
+      "Bash(git mv *)"
+    ]
+  }
+}
