@@ -208,7 +208,7 @@ export default function Sidebar() {
             {theme === "dark" ? "Light Mode" : "Dark Mode"}
           </button>
 
-          {CLERK_ACTIVE ? <ClerkUserWidget /> : <CreatorCard />}
+          {CLERK_ACTIVE ? <ClerkUserWidget /> : <DataStatusChip data={data} />}
         </div>
       </aside>
     </>
