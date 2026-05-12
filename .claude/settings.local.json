@@ -20,7 +20,15 @@
       "Bash(git push *)",
       "Bash(vercel --prod --yes)",
       "Bash(git mv *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(npm i *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--FETech-Analytics\\\\721772c2-3d3f-4ac0-852c-e0db0ecc607a\\\\tasks\\\\bfdrnginh.output\" -Wait)",
+      "Bash(Select-String -Pattern \"added|error|ERR\" --line-buffered)",
+      "Bash(vercel --version)",
+      "Bash(vercel login *)",
+      "Bash(vercel --prod)",
+      "Bash(git commit -m 'Fix: replace CreatorCard reference with DataStatusChip *)",
+      "Bash(git commit -m 'Remove Project Report button from hero CTA row *)"
     ]
   }
 }

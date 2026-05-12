@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { DollarSign, ShoppingCart, Users, TrendingUp, Target, Pencil, Check } from "lucide-react";
+import { DollarSign, ShoppingCart, Users, TrendingUp, Target, Pencil, Check, Printer } from "lucide-react";
 import Header from "@/components/layout/Header";
 import KPICard from "@/components/ui/KPICard";
 import SectionCard from "@/components/ui/SectionCard";
@@ -13,6 +13,7 @@ import CategoryDonutChart from "@/components/charts/CategoryDonutChart";
 import RegionBarChart from "@/components/charts/RegionBarChart";
 import RecentOrdersTable from "@/components/tables/RecentOrdersTable";
 import { useData } from "@/context/DataContext";
+import { useDateRange } from "@/context/DateRangeContext";
 import { getOverviewInsights, getHealthScore } from "@/lib/insightEngine";
 import { cn } from "@/lib/utils";
 
@@ -107,13 +108,16 @@ function GoalTracker({ revenue }: { revenue: number }) {
 
 export default function DashboardPage() {
   const { data, isLoaded } = useData();
+  const { filterMonths, rangeLabel, range } = useDateRange();
 
-  const totalRevenue = data.monthlyRevenue.reduce((s, m) => s + m.revenue, 0);
-  const totalRevenuePrev = data.monthlyRevenue.reduce((s, m) => s + m.prevYearRevenue, 0);
-  const totalOrders = data.monthlyRevenue.reduce((s, m) => s + m.orders, 0);
+  const filteredMonths = filterMonths(data.monthlyRevenue);
+  const totalRevenue = filteredMonths.reduce((s, m) => s + m.revenue, 0);
+  const totalRevenuePrev = filteredMonths.reduce((s, m) => s + m.prevYearRevenue, 0);
+  const totalOrders = filteredMonths.reduce((s, m) => s + m.orders, 0);
   const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
   const totalCustomers = data.customerSegments.reduce((s, c) => s + c.count, 0);
   const prevCustomers = Math.round(totalCustomers * 0.87);
+  const periodLabel = range === "all" ? data.period : rangeLabel;
 
   const insights = getOverviewInsights(data);
   const healthScore = getHealthScore(data);
@@ -131,7 +135,16 @@ export default function DashboardPage() {
     <>
       <Header
         title="Overview"
-        subtitle={`Retail performance summary — ${data.period}${data.isCustomData ? ` · ${data.companyName}` : ""}`}
+        subtitle={`Retail performance summary — ${periodLabel}${data.isCustomData ? ` · ${data.companyName}` : ""}`}
+        action={
+          <button
+            onClick={() => window.print()}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-slate-700 text-sm font-medium text-gray-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <Printer className="h-4 w-4" />
+            <span className="hidden sm:inline">Export PDF</span>
+          </button>
+        }
       />
 
       <div className="flex-1 p-4 sm:p-8 space-y-6 sm:space-y-8">
@@ -156,7 +169,7 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <SectionCard title="Monthly Revenue — YoY Comparison" subtitle="Current year vs previous year" className="xl:col-span-2">
-            <RevenueChart data={data.monthlyRevenue} />
+            <RevenueChart data={filteredMonths} />
           </SectionCard>
           <SectionCard title="Revenue by Category" subtitle="Share of total revenue">
             <CategoryDonutChart data={data.salesByCategory} />
