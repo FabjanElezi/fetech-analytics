@@ -135,7 +135,7 @@ export default function CustomersPage() {
                 <thead>
                   <tr className="border-b border-gray-100 dark:border-slate-700">
                     {["Segment","Customers","Share","Avg LTV","Orders/yr"].map((h) => (
-                      <th key={h} className="px-6 py-2.5 text-left text-xs font-medium text-gray-400 uppercase tracking-wide">{h}</th>
+                      <th key={h} className="px-6 py-2.5 text-left text-xs font-medium text-gray-400 dark:text-slate-500 uppercase tracking-wide">{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -147,22 +147,22 @@ export default function CustomersPage() {
                       onClick={() => setSelectedSegment(seg)}
                     >
                       <td className="px-6 py-3">
-                        <span className="flex items-center gap-2 font-medium text-gray-800">
+                        <span className="flex items-center gap-2 font-medium text-gray-800 dark:text-slate-200">
                           <span className="h-2.5 w-2.5 rounded-full shrink-0" style={{ background: seg.color }} />
                           {seg.segment}
                         </span>
                       </td>
-                      <td className="px-6 py-3 text-gray-600">{formatNumber(seg.count)}</td>
+                      <td className="px-6 py-3 text-gray-600 dark:text-slate-400">{formatNumber(seg.count)}</td>
                       <td className="px-6 py-3">
                         <div className="flex items-center gap-2">
-                          <div className="h-1.5 rounded-full bg-gray-100 w-16 overflow-hidden">
+                          <div className="h-1.5 rounded-full bg-gray-100 dark:bg-slate-600 w-16 overflow-hidden">
                             <div className="h-full rounded-full" style={{ width: `${seg.percentage}%`, background: seg.color }} />
                           </div>
-                          <span className="text-gray-500 text-xs">{seg.percentage}%</span>
+                          <span className="text-gray-500 dark:text-slate-400 text-xs">{seg.percentage}%</span>
                         </div>
                       </td>
-                      <td className="px-6 py-3 font-semibold text-gray-900">{formatCurrency(seg.avgLifetimeValue)}</td>
-                      <td className="px-6 py-3 text-gray-600">{seg.avgOrderFrequency}x</td>
+                      <td className="px-6 py-3 font-semibold text-gray-900 dark:text-slate-100">{formatCurrency(seg.avgLifetimeValue)}</td>
+                      <td className="px-6 py-3 text-gray-600 dark:text-slate-400">{seg.avgOrderFrequency}x</td>
                     </tr>
                   ))}
                 </tbody>
@@ -180,17 +180,17 @@ export default function CustomersPage() {
             <div className="overflow-x-auto -mx-6">
               <table className="w-full text-xs font-medium">
                 <thead>
-                  <tr className="border-b border-gray-100">
-                    <th className="px-6 py-2.5 text-left text-gray-400 font-medium w-28">Cohort</th>
+                  <tr className="border-b border-gray-100 dark:border-slate-700">
+                    <th className="px-6 py-2.5 text-left text-gray-400 dark:text-slate-500 font-medium w-28">Cohort</th>
                     {["Month 0","Month 1","Month 2","Month 3","Month 6","Month 12"].map((h) => (
-                      <th key={h} className="px-3 py-2.5 text-center text-gray-400 font-medium">{h}</th>
+                      <th key={h} className="px-3 py-2.5 text-center text-gray-400 dark:text-slate-500 font-medium">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {data.retentionCohorts.map((row) => (
-                    <tr key={row.cohort} className="border-b border-gray-50">
-                      <td className="px-6 py-2 text-gray-600 font-medium whitespace-nowrap">{row.cohort}</td>
+                    <tr key={row.cohort} className="border-b border-gray-50 dark:border-slate-700/50">
+                      <td className="px-6 py-2 text-gray-600 dark:text-slate-400 font-medium whitespace-nowrap">{row.cohort}</td>
                       {[row.month0,row.month1,row.month2,row.month3,row.month6,row.month12].map((val, i) => (
                         <td key={i} className="px-3 py-2 text-center">
                           <span className={`inline-block w-12 py-1 rounded text-center ${retentionColor(val)}`}>

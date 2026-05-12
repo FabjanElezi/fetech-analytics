@@ -131,14 +131,14 @@ export default function ImportPage() {
 
         {/* ── Current dataset banner ─────────────────────────────────── */}
         {data.isCustomData && (
-          <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+          <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800">
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+              <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <div>
-                <p className="text-sm font-semibold text-emerald-800">
+                <p className="text-sm font-semibold text-emerald-800 dark:text-emerald-300">
                   Custom data active — {data.companyName}
                 </p>
-                <p className="text-xs text-emerald-600 mt-0.5">
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-0.5">
                   Imported from <span className="font-mono">{data.fileName}</span>
                   {data.importedAt && ` on ${new Date(data.importedAt).toLocaleDateString()}`}
                 </p>
@@ -172,9 +172,9 @@ export default function ImportPage() {
           <div className="overflow-x-auto -mx-6">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-gray-100">
+                <tr className="border-b border-gray-100 dark:border-slate-700">
                   {["Column", "Required", "Example values", "Notes"].map((h) => (
-                    <th key={h} className="px-6 py-2.5 text-left font-medium text-gray-400 uppercase tracking-wide">
+                    <th key={h} className="px-6 py-2.5 text-left font-medium text-gray-400 dark:text-slate-500 uppercase tracking-wide">
                       {h}
                     </th>
                   ))}
@@ -193,17 +193,17 @@ export default function ImportPage() {
                   ["region",        "No",  "Northeast",           "Regional revenue breakdown"],
                   ["status",        "No",  "completed / returned","Returned orders are tracked separately"],
                 ].map(([col, req, ex, note]) => (
-                  <tr key={col} className="border-b border-gray-50 hover:bg-gray-50">
-                    <td className="px-6 py-2.5 font-mono font-medium text-indigo-600">{col}</td>
+                  <tr key={col} className="border-b border-gray-50 dark:border-slate-700/50 hover:bg-gray-50 dark:hover:bg-slate-700/50">
+                    <td className="px-6 py-2.5 font-mono font-medium text-indigo-600 dark:text-indigo-400">{col}</td>
                     <td className="px-6 py-2.5">
                       <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-medium ${
-                        req === "Yes" ? "bg-indigo-50 text-indigo-600" : "bg-gray-100 text-gray-500"
+                        req === "Yes" ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400" : "bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400"
                       }`}>
                         {req}
                       </span>
                     </td>
-                    <td className="px-6 py-2.5 text-gray-500 font-mono">{ex}</td>
-                    <td className="px-6 py-2.5 text-gray-500">{note}</td>
+                    <td className="px-6 py-2.5 text-gray-500 dark:text-slate-400 font-mono">{ex}</td>
+                    <td className="px-6 py-2.5 text-gray-500 dark:text-slate-400">{note}</td>
                   </tr>
                 ))}
               </tbody>
@@ -236,8 +236,8 @@ export default function ImportPage() {
                     <span className={cn(
                       "text-xs font-semibold px-2 py-0.5 rounded",
                       REQUIRED_FIELDS.includes(field as typeof REQUIRED_FIELDS[number])
-                        ? "bg-indigo-50 text-indigo-600"
-                        : "bg-gray-100 text-gray-500"
+                        ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
+                        : "bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400"
                     )}>
                       {REQUIRED_FIELDS.includes(field as typeof REQUIRED_FIELDS[number]) ? "Required" : "Optional"}
                     </span>
@@ -268,7 +268,7 @@ export default function ImportPage() {
               </button>
               <button
                 onClick={() => setShowMapper(false)}
-                className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                className="px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
               >
                 Cancel
               </button>
@@ -292,9 +292,9 @@ export default function ImportPage() {
             <div className="overflow-x-auto -mx-6">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-gray-100">
+                  <tr className="border-b border-gray-100 dark:border-slate-700">
                     {rawRows.headers.map((h) => (
-                      <th key={h} className="px-4 py-2 text-left font-semibold text-indigo-600 uppercase tracking-wide whitespace-nowrap">
+                      <th key={h} className="px-4 py-2 text-left font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide whitespace-nowrap">
                         {h}
                       </th>
                     ))}
@@ -302,10 +302,10 @@ export default function ImportPage() {
                 </thead>
                 <tbody>
                   {rawRows.rows.map((row, i) => (
-                    <tr key={i} className="border-b border-gray-50 hover:bg-gray-50">
+                    <tr key={i} className="border-b border-gray-50 dark:border-slate-700/50 hover:bg-gray-50 dark:hover:bg-slate-700/50">
                       {row.map((cell, j) => (
-                        <td key={j} className="px-4 py-2 text-gray-600 whitespace-nowrap font-mono">
-                          {cell || <span className="text-gray-300">—</span>}
+                        <td key={j} className="px-4 py-2 text-gray-600 dark:text-slate-400 whitespace-nowrap font-mono">
+                          {cell || <span className="text-gray-300 dark:text-slate-600">—</span>}
                         </td>
                       ))}
                     </tr>
@@ -333,9 +333,9 @@ export default function ImportPage() {
                 { label: "Channels",       value: formatNumber(preview.salesByChannel.length) },
                 { label: "Cohorts",        value: formatNumber(preview.retentionCohorts.length) },
               ].map(({ label, value }) => (
-                <div key={label} className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
-                  <p className="text-xl font-bold text-gray-900">{value}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{label}</p>
+                <div key={label} className="rounded-xl border border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-700/50 p-4 text-center">
+                  <p className="text-xl font-bold text-gray-900 dark:text-slate-100">{value}</p>
+                  <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">{label}</p>
                 </div>
               ))}
             </div>
@@ -350,7 +350,7 @@ export default function ImportPage() {
               </button>
               <button
                 onClick={() => { setPreview(null); setRawRows(null); }}
-                className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                className="px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-600 text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
               >
                 Cancel
               </button>
