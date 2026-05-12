@@ -15,7 +15,6 @@ import {
   X,
   Sun,
   Moon,
-  Info,
   Mail,
   Globe,
 } from "lucide-react";
@@ -206,16 +205,6 @@ export default function Sidebar() {
 
         {/* Footer: about link + dark mode toggle + user widget */}
         <div className="px-3 py-4 border-t border-slate-800 space-y-2">
-          {/* About / Landing page link */}
-          <Link
-            href="/landing"
-            onClick={close}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition-colors text-sm font-medium"
-          >
-            <Info className="h-4 w-4 shrink-0" />
-            About this platform
-          </Link>
-
           {/* Dark mode toggle */}
           <button
             onClick={toggleTheme}
