@@ -140,7 +140,7 @@ export default function Sidebar() {
             </div>
             <div>
               <p className="text-sm font-semibold text-white leading-tight">FETech Analytics</p>
-              <p className="text-xs text-slate-400 leading-tight">Analytics Platform</p>
+              <p className="text-xs text-slate-400 leading-tight">BI Platform</p>
             </div>
           </div>
           {/* Mobile close button */}
