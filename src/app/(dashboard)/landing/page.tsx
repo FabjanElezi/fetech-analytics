@@ -156,9 +156,6 @@ export default function AboutPage() {
             <Link href="/import" className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-slate-700 text-sm font-semibold text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
               <Upload className="h-4 w-4 text-indigo-600" /> Import your CSV
             </Link>
-            <Link href="/project-report" className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-slate-700 text-sm font-semibold text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
-              <FileText className="h-4 w-4 text-indigo-600" /> Project Report
-            </Link>
           </div>
         </section>
 
